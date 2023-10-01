@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keyfob_Tester", "Keyfob_Tester\Keyfob_Tester.csproj", "{490F4BDE-68BF-47C8-83B5-58C298BEE29D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{490F4BDE-68BF-47C8-83B5-58C298BEE29D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{490F4BDE-68BF-47C8-83B5-58C298BEE29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{490F4BDE-68BF-47C8-83B5-58C298BEE29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{490F4BDE-68BF-47C8-83B5-58C298BEE29D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32FF34BB-F202-415E-B02D-E9F89855E1AA}
+	EndGlobalSection
+EndGlobal
