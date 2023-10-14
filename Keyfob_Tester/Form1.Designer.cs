@@ -1,4 +1,6 @@
-﻿namespace Keyfob_Tester
+﻿using System.Windows.Forms;
+
+namespace Keyfob_Tester
 {
     partial class Form1
     {
@@ -56,6 +58,8 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox_ArduinoMessages = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button_StopPolling = new System.Windows.Forms.Button();
             this.button_StopImmobilizer = new System.Windows.Forms.Button();
             this.button_StartImmobilizer = new System.Windows.Forms.Button();
@@ -78,8 +82,15 @@
             this.button_ImmobilizerActive = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage_Test = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button_GetKeyListTest = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.textBox_TestMessages = new System.Windows.Forms.TextBox();
+            this.buttonStopTest = new System.Windows.Forms.Button();
+            this.button_StartTest = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.tab_Program.SuspendLayout();
             this.tabPage_Connections.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,6 +101,9 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tabPage_Test.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab_Program
@@ -110,7 +124,7 @@
             this.tabPage_Connections.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Connections.Name = "tabPage_Connections";
             this.tabPage_Connections.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Connections.Size = new System.Drawing.Size(768, 400);
+            this.tabPage_Connections.Size = new System.Drawing.Size(880, 400);
             this.tabPage_Connections.TabIndex = 0;
             this.tabPage_Connections.Text = "Bağlantılar";
             this.tabPage_Connections.UseVisualStyleBackColor = true;
@@ -135,23 +149,26 @@
             // label_Status2
             // 
             this.label_Status2.AutoSize = true;
+            this.label_Status2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Status2.Location = new System.Drawing.Point(70, 103);
             this.label_Status2.Name = "label_Status2";
-            this.label_Status2.Size = new System.Drawing.Size(79, 13);
+            this.label_Status2.Size = new System.Drawing.Size(109, 16);
             this.label_Status2.TabIndex = 21;
             this.label_Status2.Text = "Not Connected";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(7, 103);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(50, 16);
             this.label2.TabIndex = 20;
             this.label2.Text = "Status: ";
             // 
             // button_Disconnect2
             // 
+            this.button_Disconnect2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Disconnect2.Location = new System.Drawing.Point(167, 126);
             this.button_Disconnect2.Name = "button_Disconnect2";
             this.button_Disconnect2.Size = new System.Drawing.Size(94, 34);
@@ -162,6 +179,7 @@
             // 
             // button_Connect2
             // 
+            this.button_Connect2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Connect2.Location = new System.Drawing.Point(10, 126);
             this.button_Connect2.Name = "button_Connect2";
             this.button_Connect2.Size = new System.Drawing.Size(94, 34);
@@ -199,18 +217,20 @@
             // label_Baudrate2
             // 
             this.label_Baudrate2.AutoSize = true;
+            this.label_Baudrate2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Baudrate2.Location = new System.Drawing.Point(7, 73);
             this.label_Baudrate2.Name = "label_Baudrate2";
-            this.label_Baudrate2.Size = new System.Drawing.Size(50, 13);
+            this.label_Baudrate2.Size = new System.Drawing.Size(62, 16);
             this.label_Baudrate2.TabIndex = 11;
             this.label_Baudrate2.Text = "Baudrate";
             // 
             // label_COMPort2
             // 
             this.label_COMPort2.AutoSize = true;
+            this.label_COMPort2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_COMPort2.Location = new System.Drawing.Point(7, 38);
             this.label_COMPort2.Name = "label_COMPort2";
-            this.label_COMPort2.Size = new System.Drawing.Size(53, 13);
+            this.label_COMPort2.Size = new System.Drawing.Size(64, 16);
             this.label_COMPort2.TabIndex = 10;
             this.label_COMPort2.Text = "COM Port";
             // 
@@ -234,23 +254,26 @@
             // label_Status1
             // 
             this.label_Status1.AutoSize = true;
+            this.label_Status1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Status1.Location = new System.Drawing.Point(70, 105);
             this.label_Status1.Name = "label_Status1";
-            this.label_Status1.Size = new System.Drawing.Size(79, 13);
+            this.label_Status1.Size = new System.Drawing.Size(109, 16);
             this.label_Status1.TabIndex = 17;
             this.label_Status1.Text = "Not Connected";
             // 
             // label_ConnectionStatus1
             // 
             this.label_ConnectionStatus1.AutoSize = true;
+            this.label_ConnectionStatus1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_ConnectionStatus1.Location = new System.Drawing.Point(7, 105);
             this.label_ConnectionStatus1.Name = "label_ConnectionStatus1";
-            this.label_ConnectionStatus1.Size = new System.Drawing.Size(43, 13);
+            this.label_ConnectionStatus1.Size = new System.Drawing.Size(50, 16);
             this.label_ConnectionStatus1.TabIndex = 16;
             this.label_ConnectionStatus1.Text = "Status: ";
             // 
             // button_Disconnect1
             // 
+            this.button_Disconnect1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Disconnect1.Location = new System.Drawing.Point(167, 128);
             this.button_Disconnect1.Name = "button_Disconnect1";
             this.button_Disconnect1.Size = new System.Drawing.Size(94, 34);
@@ -261,6 +284,7 @@
             // 
             // button_Connect1
             // 
+            this.button_Connect1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Connect1.Location = new System.Drawing.Point(10, 128);
             this.button_Connect1.Name = "button_Connect1";
             this.button_Connect1.Size = new System.Drawing.Size(94, 34);
@@ -298,18 +322,20 @@
             // label_Baudrate1
             // 
             this.label_Baudrate1.AutoSize = true;
+            this.label_Baudrate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Baudrate1.Location = new System.Drawing.Point(7, 75);
             this.label_Baudrate1.Name = "label_Baudrate1";
-            this.label_Baudrate1.Size = new System.Drawing.Size(50, 13);
+            this.label_Baudrate1.Size = new System.Drawing.Size(62, 16);
             this.label_Baudrate1.TabIndex = 10;
             this.label_Baudrate1.Text = "Baudrate";
             // 
             // label_COMPort1
             // 
             this.label_COMPort1.AutoSize = true;
+            this.label_COMPort1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_COMPort1.Location = new System.Drawing.Point(7, 40);
             this.label_COMPort1.Name = "label_COMPort1";
-            this.label_COMPort1.Size = new System.Drawing.Size(53, 13);
+            this.label_COMPort1.Size = new System.Drawing.Size(64, 16);
             this.label_COMPort1.TabIndex = 9;
             this.label_COMPort1.Text = "COM Port";
             // 
@@ -342,6 +368,7 @@
             this.textBox_EvalBoardMessages.Location = new System.Drawing.Point(6, 10);
             this.textBox_EvalBoardMessages.Multiline = true;
             this.textBox_EvalBoardMessages.Name = "textBox_EvalBoardMessages";
+            this.textBox_EvalBoardMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_EvalBoardMessages.Size = new System.Drawing.Size(471, 109);
             this.textBox_EvalBoardMessages.TabIndex = 0;
             // 
@@ -359,6 +386,7 @@
             this.textBox_ArduinoMessages.Location = new System.Drawing.Point(6, 10);
             this.textBox_ArduinoMessages.Multiline = true;
             this.textBox_ArduinoMessages.Name = "textBox_ArduinoMessages";
+            this.textBox_ArduinoMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_ArduinoMessages.Size = new System.Drawing.Size(353, 109);
             this.textBox_ArduinoMessages.TabIndex = 0;
             // 
@@ -381,6 +409,24 @@
             this.groupBox5.Size = new System.Drawing.Size(477, 257);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(224, 125);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Select Key";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(224, 141);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 13;
+            this.comboBox1.DropDownStyleChanged += new System.EventHandler(this.DropDownList);
             // 
             // button_StopPolling
             // 
@@ -467,6 +513,7 @@
             this.button_ResetDeviceEvalBoard.TabIndex = 4;
             this.button_ResetDeviceEvalBoard.Text = "Reset Device";
             this.button_ResetDeviceEvalBoard.UseVisualStyleBackColor = true;
+            this.button_ResetDeviceEvalBoard.Click += new System.EventHandler(this.button_ResetDeviceEvalBoard_Click);
             // 
             // label5
             // 
@@ -594,31 +641,104 @@
             // 
             // tabPage_Test
             // 
+            this.tabPage_Test.Controls.Add(this.groupBox8);
             this.tabPage_Test.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Test.Name = "tabPage_Test";
             this.tabPage_Test.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Test.Size = new System.Drawing.Size(768, 400);
+            this.tabPage_Test.Size = new System.Drawing.Size(880, 400);
             this.tabPage_Test.TabIndex = 2;
             this.tabPage_Test.Text = "Test";
             this.tabPage_Test.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // groupBox8
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(224, 141);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 13;
-            this.comboBox1.DropDownStyleChanged += new System.EventHandler(this.DropDownList);
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.comboBox2);
+            this.groupBox8.Controls.Add(this.button_GetKeyListTest);
+            this.groupBox8.Controls.Add(this.groupBox9);
+            this.groupBox8.Controls.Add(this.buttonStopTest);
+            this.groupBox8.Controls.Add(this.button_StartTest);
+            this.groupBox8.Controls.Add(this.label8);
+            this.groupBox8.Location = new System.Drawing.Point(6, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(666, 388);
+            this.groupBox8.TabIndex = 1;
+            this.groupBox8.TabStop = false;
             // 
-            // label1
+            // label9
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(224, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Select Key";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(135, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Select Key";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(135, 63);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 15;
+            // 
+            // button_GetKeyListTest
+            // 
+            this.button_GetKeyListTest.Location = new System.Drawing.Point(9, 50);
+            this.button_GetKeyListTest.Name = "button_GetKeyListTest";
+            this.button_GetKeyListTest.Size = new System.Drawing.Size(88, 34);
+            this.button_GetKeyListTest.TabIndex = 4;
+            this.button_GetKeyListTest.Text = "Get Key List";
+            this.button_GetKeyListTest.UseVisualStyleBackColor = true;
+            this.button_GetKeyListTest.Click += new System.EventHandler(this.button_GetKeyListTest_Click);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.textBox_TestMessages);
+            this.groupBox9.Location = new System.Drawing.Point(9, 137);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(651, 245);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            // 
+            // textBox_TestMessages
+            // 
+            this.textBox_TestMessages.Location = new System.Drawing.Point(3, 13);
+            this.textBox_TestMessages.Multiline = true;
+            this.textBox_TestMessages.Name = "textBox_TestMessages";
+            this.textBox_TestMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_TestMessages.Size = new System.Drawing.Size(642, 269);
+            this.textBox_TestMessages.TabIndex = 0;
+            // 
+            // buttonStopTest
+            // 
+            this.buttonStopTest.Location = new System.Drawing.Point(135, 97);
+            this.buttonStopTest.Name = "buttonStopTest";
+            this.buttonStopTest.Size = new System.Drawing.Size(88, 34);
+            this.buttonStopTest.TabIndex = 2;
+            this.buttonStopTest.Text = "Stop Test";
+            this.buttonStopTest.UseVisualStyleBackColor = true;
+            this.buttonStopTest.Click += new System.EventHandler(this.buttonStopTest_Click);
+            // 
+            // button_StartTest
+            // 
+            this.button_StartTest.Location = new System.Drawing.Point(9, 97);
+            this.button_StartTest.Name = "button_StartTest";
+            this.button_StartTest.Size = new System.Drawing.Size(88, 34);
+            this.button_StartTest.TabIndex = 1;
+            this.button_StartTest.Text = "Start Test";
+            this.button_StartTest.UseVisualStyleBackColor = true;
+            this.button_StartTest.Click += new System.EventHandler(this.button_StartTest_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 20);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Test List";
             // 
             // Form1
             // 
@@ -646,6 +766,11 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tabPage_Test.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -704,6 +829,15 @@
         private System.Windows.Forms.TextBox textBox_EvalBoardMessages;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
+        private GroupBox groupBox8;
+        private Button buttonStopTest;
+        private Button button_StartTest;
+        private Label label8;
+        private GroupBox groupBox9;
+        private TextBox textBox_TestMessages;
+        private Button button_GetKeyListTest;
+        private Label label9;
+        private ComboBox comboBox2;
     }
 }
 
