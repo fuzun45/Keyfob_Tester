@@ -30,6 +30,7 @@ namespace Keyfob_Tester
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tab_Program = new System.Windows.Forms.TabControl();
             this.tabPage_Connections = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -53,30 +54,6 @@ namespace Keyfob_Tester
             this.label_Baudrate1 = new System.Windows.Forms.Label();
             this.label_COMPort1 = new System.Windows.Forms.Label();
             this.tabPage_FunctionControl = new System.Windows.Forms.TabPage();
-            this.tabPage_Test = new System.Windows.Forms.TabPage();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button_GetKeyListTest = new System.Windows.Forms.Button();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.textBox_TestMessages = new System.Windows.Forms.TextBox();
-            this.buttonStopTest = new System.Windows.Forms.Button();
-            this.button_StartTest = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox_ArduinoMessages = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button_ResetDeviceArduino = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button_PSActivation = new System.Windows.Forms.Button();
-            this.button_UHFTxActivation = new System.Windows.Forms.Button();
-            this.button_UHFTxActivated = new System.Windows.Forms.Button();
-            this.button_Standby = new System.Windows.Forms.Button();
-            this.button_ImmobilizerActive = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.button_Clear = new System.Windows.Forms.Button();
             this.button_Save = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -96,19 +73,43 @@ namespace Keyfob_Tester
             this.label6 = new System.Windows.Forms.Label();
             this.button_ResetDeviceEvalBoard = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox_ArduinoMessages = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button_ResetDeviceArduino = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button_PSActivation = new System.Windows.Forms.Button();
+            this.button_UHFTxActivation = new System.Windows.Forms.Button();
+            this.button_UHFTxActivated = new System.Windows.Forms.Button();
+            this.button_Standby = new System.Windows.Forms.Button();
+            this.button_ImmobilizerActive = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tabPage_Test = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button_GetKeyListTest = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.textBox_TestMessages = new System.Windows.Forms.TextBox();
+            this.buttonStopTest = new System.Windows.Forms.Button();
+            this.button_StartTest = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.tab_Program.SuspendLayout();
             this.tabPage_Connections.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage_FunctionControl.SuspendLayout();
-            this.tabPage_Test.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox11.SuspendLayout();
+            this.tabPage_Test.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab_Program
@@ -116,10 +117,11 @@ namespace Keyfob_Tester
             this.tab_Program.Controls.Add(this.tabPage_Connections);
             this.tab_Program.Controls.Add(this.tabPage_FunctionControl);
             this.tab_Program.Controls.Add(this.tabPage_Test);
-            this.tab_Program.Location = new System.Drawing.Point(12, 12);
+            this.tab_Program.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tab_Program.Location = new System.Drawing.Point(7, 4);
             this.tab_Program.Name = "tab_Program";
             this.tab_Program.SelectedIndex = 0;
-            this.tab_Program.Size = new System.Drawing.Size(1023, 631);
+            this.tab_Program.Size = new System.Drawing.Size(993, 626);
             this.tab_Program.TabIndex = 3;
             // 
             // tabPage_Connections
@@ -129,7 +131,7 @@ namespace Keyfob_Tester
             this.tabPage_Connections.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Connections.Name = "tabPage_Connections";
             this.tabPage_Connections.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Connections.Size = new System.Drawing.Size(1015, 605);
+            this.tabPage_Connections.Size = new System.Drawing.Size(989, 577);
             this.tabPage_Connections.TabIndex = 0;
             this.tabPage_Connections.Text = "Bağlantılar";
             this.tabPage_Connections.UseVisualStyleBackColor = true;
@@ -250,6 +252,7 @@ namespace Keyfob_Tester
             this.groupBox1.Controls.Add(this.comboBox_COMPortArduino);
             this.groupBox1.Controls.Add(this.label_Baudrate1);
             this.groupBox1.Controls.Add(this.label_COMPort1);
+            this.groupBox1.Enabled = false;
             this.groupBox1.Location = new System.Drawing.Point(6, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(276, 179);
@@ -358,251 +361,10 @@ namespace Keyfob_Tester
             this.tabPage_FunctionControl.Location = new System.Drawing.Point(4, 22);
             this.tabPage_FunctionControl.Name = "tabPage_FunctionControl";
             this.tabPage_FunctionControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_FunctionControl.Size = new System.Drawing.Size(1015, 605);
+            this.tabPage_FunctionControl.Size = new System.Drawing.Size(985, 600);
             this.tabPage_FunctionControl.TabIndex = 1;
             this.tabPage_FunctionControl.Text = "Function Control";
             this.tabPage_FunctionControl.UseVisualStyleBackColor = true;
-            // 
-            // tabPage_Test
-            // 
-            this.tabPage_Test.Controls.Add(this.groupBox8);
-            this.tabPage_Test.Location = new System.Drawing.Point(4, 22);
-            this.tabPage_Test.Name = "tabPage_Test";
-            this.tabPage_Test.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Test.Size = new System.Drawing.Size(1015, 605);
-            this.tabPage_Test.TabIndex = 2;
-            this.tabPage_Test.Text = "Test";
-            this.tabPage_Test.UseVisualStyleBackColor = true;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label9);
-            this.groupBox8.Controls.Add(this.comboBox2);
-            this.groupBox8.Controls.Add(this.button_GetKeyListTest);
-            this.groupBox8.Controls.Add(this.groupBox9);
-            this.groupBox8.Controls.Add(this.buttonStopTest);
-            this.groupBox8.Controls.Add(this.button_StartTest);
-            this.groupBox8.Controls.Add(this.label8);
-            this.groupBox8.Location = new System.Drawing.Point(6, 6);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(666, 388);
-            this.groupBox8.TabIndex = 1;
-            this.groupBox8.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(135, 47);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Select Key";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(135, 63);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 15;
-            // 
-            // button_GetKeyListTest
-            // 
-            this.button_GetKeyListTest.Location = new System.Drawing.Point(9, 50);
-            this.button_GetKeyListTest.Name = "button_GetKeyListTest";
-            this.button_GetKeyListTest.Size = new System.Drawing.Size(88, 34);
-            this.button_GetKeyListTest.TabIndex = 4;
-            this.button_GetKeyListTest.Text = "Get Key List";
-            this.button_GetKeyListTest.UseVisualStyleBackColor = true;
-            this.button_GetKeyListTest.Click += new System.EventHandler(this.button_GetKeyListTest_Click);
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.textBox_TestMessages);
-            this.groupBox9.Location = new System.Drawing.Point(9, 137);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(651, 245);
-            this.groupBox9.TabIndex = 3;
-            this.groupBox9.TabStop = false;
-            // 
-            // textBox_TestMessages
-            // 
-            this.textBox_TestMessages.Location = new System.Drawing.Point(3, 13);
-            this.textBox_TestMessages.Multiline = true;
-            this.textBox_TestMessages.Name = "textBox_TestMessages";
-            this.textBox_TestMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_TestMessages.Size = new System.Drawing.Size(642, 269);
-            this.textBox_TestMessages.TabIndex = 0;
-            // 
-            // buttonStopTest
-            // 
-            this.buttonStopTest.Location = new System.Drawing.Point(135, 97);
-            this.buttonStopTest.Name = "buttonStopTest";
-            this.buttonStopTest.Size = new System.Drawing.Size(88, 34);
-            this.buttonStopTest.TabIndex = 2;
-            this.buttonStopTest.Text = "Stop Test";
-            this.buttonStopTest.UseVisualStyleBackColor = true;
-            this.buttonStopTest.Click += new System.EventHandler(this.buttonStopTest_Click);
-            // 
-            // button_StartTest
-            // 
-            this.button_StartTest.Location = new System.Drawing.Point(9, 97);
-            this.button_StartTest.Name = "button_StartTest";
-            this.button_StartTest.Size = new System.Drawing.Size(88, 34);
-            this.button_StartTest.TabIndex = 1;
-            this.button_StartTest.Text = "Start Test";
-            this.button_StartTest.UseVisualStyleBackColor = true;
-            this.button_StartTest.Click += new System.EventHandler(this.button_StartTest_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(6, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 20);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Test List";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(225, 556);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Temizle";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(306, 556);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Kaydet";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.textBox_ArduinoMessages);
-            this.groupBox6.Location = new System.Drawing.Point(16, 269);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(365, 281);
-            this.groupBox6.TabIndex = 16;
-            this.groupBox6.TabStop = false;
-            // 
-            // textBox_ArduinoMessages
-            // 
-            this.textBox_ArduinoMessages.Location = new System.Drawing.Point(6, 10);
-            this.textBox_ArduinoMessages.Multiline = true;
-            this.textBox_ArduinoMessages.Name = "textBox_ArduinoMessages";
-            this.textBox_ArduinoMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_ArduinoMessages.Size = new System.Drawing.Size(353, 265);
-            this.textBox_ArduinoMessages.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.button_ResetDeviceArduino);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Location = new System.Drawing.Point(16, 165);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(365, 98);
-            this.groupBox4.TabIndex = 18;
-            this.groupBox4.TabStop = false;
-            // 
-            // button_ResetDeviceArduino
-            // 
-            this.button_ResetDeviceArduino.Location = new System.Drawing.Point(11, 44);
-            this.button_ResetDeviceArduino.Name = "button_ResetDeviceArduino";
-            this.button_ResetDeviceArduino.Size = new System.Drawing.Size(88, 34);
-            this.button_ResetDeviceArduino.TabIndex = 4;
-            this.button_ResetDeviceArduino.Text = "Reset Device";
-            this.button_ResetDeviceArduino.UseVisualStyleBackColor = true;
-            this.button_ResetDeviceArduino.Click += new System.EventHandler(this.button_ResetDeviceArduino_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(8, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Arduino Control";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.button_PSActivation);
-            this.groupBox3.Controls.Add(this.button_UHFTxActivation);
-            this.groupBox3.Controls.Add(this.button_UHFTxActivated);
-            this.groupBox3.Controls.Add(this.button_Standby);
-            this.groupBox3.Controls.Add(this.button_ImmobilizerActive);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(16, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(365, 143);
-            this.groupBox3.TabIndex = 17;
-            this.groupBox3.TabStop = false;
-            // 
-            // button_PSActivation
-            // 
-            this.button_PSActivation.Location = new System.Drawing.Point(135, 97);
-            this.button_PSActivation.Name = "button_PSActivation";
-            this.button_PSActivation.Size = new System.Drawing.Size(88, 34);
-            this.button_PSActivation.TabIndex = 5;
-            this.button_PSActivation.Text = "PS Activation";
-            this.button_PSActivation.UseVisualStyleBackColor = true;
-            this.button_PSActivation.Click += new System.EventHandler(this.button_PSActivation_Click);
-            // 
-            // button_UHFTxActivation
-            // 
-            this.button_UHFTxActivation.Location = new System.Drawing.Point(9, 97);
-            this.button_UHFTxActivation.Name = "button_UHFTxActivation";
-            this.button_UHFTxActivation.Size = new System.Drawing.Size(88, 34);
-            this.button_UHFTxActivation.TabIndex = 4;
-            this.button_UHFTxActivation.Text = "UHF Tx Activation";
-            this.button_UHFTxActivation.UseVisualStyleBackColor = true;
-            this.button_UHFTxActivation.Click += new System.EventHandler(this.button_UHFTxActivation_Click);
-            // 
-            // button_UHFTxActivated
-            // 
-            this.button_UHFTxActivated.Location = new System.Drawing.Point(261, 44);
-            this.button_UHFTxActivated.Name = "button_UHFTxActivated";
-            this.button_UHFTxActivated.Size = new System.Drawing.Size(88, 34);
-            this.button_UHFTxActivated.TabIndex = 3;
-            this.button_UHFTxActivated.Text = "UHF Tx Activated";
-            this.button_UHFTxActivated.UseVisualStyleBackColor = true;
-            this.button_UHFTxActivated.Click += new System.EventHandler(this.button_UHFTxActivated_Click);
-            // 
-            // button_Standby
-            // 
-            this.button_Standby.Location = new System.Drawing.Point(135, 44);
-            this.button_Standby.Name = "button_Standby";
-            this.button_Standby.Size = new System.Drawing.Size(88, 34);
-            this.button_Standby.TabIndex = 2;
-            this.button_Standby.Text = "Standby";
-            this.button_Standby.UseVisualStyleBackColor = true;
-            this.button_Standby.Click += new System.EventHandler(this.button_Standby_Click);
-            // 
-            // button_ImmobilizerActive
-            // 
-            this.button_ImmobilizerActive.Location = new System.Drawing.Point(9, 44);
-            this.button_ImmobilizerActive.Name = "button_ImmobilizerActive";
-            this.button_ImmobilizerActive.Size = new System.Drawing.Size(88, 34);
-            this.button_ImmobilizerActive.TabIndex = 1;
-            this.button_ImmobilizerActive.Text = "Immobilizer Active";
-            this.button_ImmobilizerActive.UseVisualStyleBackColor = true;
-            this.button_ImmobilizerActive.Click += new System.EventHandler(this.button_ImmobilizerActive_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Keyfob Mode List";
             // 
             // button_Clear
             // 
@@ -798,15 +560,265 @@ namespace Keyfob_Tester
             this.label5.TabIndex = 3;
             this.label5.Text = "EVAL Board Control";
             // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(225, 556);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Temizle";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(306, 556);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Kaydet";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBox_ArduinoMessages);
+            this.groupBox6.Enabled = false;
+            this.groupBox6.Location = new System.Drawing.Point(16, 269);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(365, 281);
+            this.groupBox6.TabIndex = 16;
+            this.groupBox6.TabStop = false;
+            // 
+            // textBox_ArduinoMessages
+            // 
+            this.textBox_ArduinoMessages.Location = new System.Drawing.Point(6, 10);
+            this.textBox_ArduinoMessages.Multiline = true;
+            this.textBox_ArduinoMessages.Name = "textBox_ArduinoMessages";
+            this.textBox_ArduinoMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_ArduinoMessages.Size = new System.Drawing.Size(353, 265);
+            this.textBox_ArduinoMessages.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.button_ResetDeviceArduino);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Enabled = false;
+            this.groupBox4.Location = new System.Drawing.Point(16, 165);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(365, 98);
+            this.groupBox4.TabIndex = 18;
+            this.groupBox4.TabStop = false;
+            // 
+            // button_ResetDeviceArduino
+            // 
+            this.button_ResetDeviceArduino.Location = new System.Drawing.Point(11, 44);
+            this.button_ResetDeviceArduino.Name = "button_ResetDeviceArduino";
+            this.button_ResetDeviceArduino.Size = new System.Drawing.Size(88, 34);
+            this.button_ResetDeviceArduino.TabIndex = 4;
+            this.button_ResetDeviceArduino.Text = "Reset Device";
+            this.button_ResetDeviceArduino.UseVisualStyleBackColor = true;
+            this.button_ResetDeviceArduino.Click += new System.EventHandler(this.button_ResetDeviceArduino_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(8, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(134, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Arduino Control";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.button_PSActivation);
+            this.groupBox3.Controls.Add(this.button_UHFTxActivation);
+            this.groupBox3.Controls.Add(this.button_UHFTxActivated);
+            this.groupBox3.Controls.Add(this.button_Standby);
+            this.groupBox3.Controls.Add(this.button_ImmobilizerActive);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Enabled = false;
+            this.groupBox3.Location = new System.Drawing.Point(16, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(365, 143);
+            this.groupBox3.TabIndex = 17;
+            this.groupBox3.TabStop = false;
+            // 
+            // button_PSActivation
+            // 
+            this.button_PSActivation.Location = new System.Drawing.Point(135, 97);
+            this.button_PSActivation.Name = "button_PSActivation";
+            this.button_PSActivation.Size = new System.Drawing.Size(88, 34);
+            this.button_PSActivation.TabIndex = 5;
+            this.button_PSActivation.Text = "PS Activation";
+            this.button_PSActivation.UseVisualStyleBackColor = true;
+            this.button_PSActivation.Click += new System.EventHandler(this.button_PSActivation_Click);
+            // 
+            // button_UHFTxActivation
+            // 
+            this.button_UHFTxActivation.Location = new System.Drawing.Point(9, 97);
+            this.button_UHFTxActivation.Name = "button_UHFTxActivation";
+            this.button_UHFTxActivation.Size = new System.Drawing.Size(88, 34);
+            this.button_UHFTxActivation.TabIndex = 4;
+            this.button_UHFTxActivation.Text = "UHF Tx Activation";
+            this.button_UHFTxActivation.UseVisualStyleBackColor = true;
+            this.button_UHFTxActivation.Click += new System.EventHandler(this.button_UHFTxActivation_Click);
+            // 
+            // button_UHFTxActivated
+            // 
+            this.button_UHFTxActivated.Location = new System.Drawing.Point(261, 44);
+            this.button_UHFTxActivated.Name = "button_UHFTxActivated";
+            this.button_UHFTxActivated.Size = new System.Drawing.Size(88, 34);
+            this.button_UHFTxActivated.TabIndex = 3;
+            this.button_UHFTxActivated.Text = "UHF Tx Activated";
+            this.button_UHFTxActivated.UseVisualStyleBackColor = true;
+            this.button_UHFTxActivated.Click += new System.EventHandler(this.button_UHFTxActivated_Click);
+            // 
+            // button_Standby
+            // 
+            this.button_Standby.Location = new System.Drawing.Point(135, 44);
+            this.button_Standby.Name = "button_Standby";
+            this.button_Standby.Size = new System.Drawing.Size(88, 34);
+            this.button_Standby.TabIndex = 2;
+            this.button_Standby.Text = "Standby";
+            this.button_Standby.UseVisualStyleBackColor = true;
+            this.button_Standby.Click += new System.EventHandler(this.button_Standby_Click);
+            // 
+            // button_ImmobilizerActive
+            // 
+            this.button_ImmobilizerActive.Location = new System.Drawing.Point(9, 44);
+            this.button_ImmobilizerActive.Name = "button_ImmobilizerActive";
+            this.button_ImmobilizerActive.Size = new System.Drawing.Size(88, 34);
+            this.button_ImmobilizerActive.TabIndex = 1;
+            this.button_ImmobilizerActive.Text = "Immobilizer Active";
+            this.button_ImmobilizerActive.UseVisualStyleBackColor = true;
+            this.button_ImmobilizerActive.Click += new System.EventHandler(this.button_ImmobilizerActive_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(147, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Keyfob Mode List";
+            // 
+            // tabPage_Test
+            // 
+            this.tabPage_Test.Controls.Add(this.groupBox8);
+            this.tabPage_Test.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_Test.Name = "tabPage_Test";
+            this.tabPage_Test.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage_Test.Size = new System.Drawing.Size(1015, 605);
+            this.tabPage_Test.TabIndex = 2;
+            this.tabPage_Test.Text = "Test";
+            this.tabPage_Test.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.comboBox2);
+            this.groupBox8.Controls.Add(this.button_GetKeyListTest);
+            this.groupBox8.Controls.Add(this.groupBox9);
+            this.groupBox8.Controls.Add(this.buttonStopTest);
+            this.groupBox8.Controls.Add(this.button_StartTest);
+            this.groupBox8.Controls.Add(this.label8);
+            this.groupBox8.Enabled = false;
+            this.groupBox8.Location = new System.Drawing.Point(6, 6);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(666, 388);
+            this.groupBox8.TabIndex = 1;
+            this.groupBox8.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(135, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Select Key";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(135, 63);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 15;
+            // 
+            // button_GetKeyListTest
+            // 
+            this.button_GetKeyListTest.Location = new System.Drawing.Point(9, 50);
+            this.button_GetKeyListTest.Name = "button_GetKeyListTest";
+            this.button_GetKeyListTest.Size = new System.Drawing.Size(88, 34);
+            this.button_GetKeyListTest.TabIndex = 4;
+            this.button_GetKeyListTest.Text = "Get Key List";
+            this.button_GetKeyListTest.UseVisualStyleBackColor = true;
+            this.button_GetKeyListTest.Click += new System.EventHandler(this.button_GetKeyListTest_Click);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.textBox_TestMessages);
+            this.groupBox9.Location = new System.Drawing.Point(9, 137);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(651, 245);
+            this.groupBox9.TabIndex = 3;
+            this.groupBox9.TabStop = false;
+            // 
+            // textBox_TestMessages
+            // 
+            this.textBox_TestMessages.Location = new System.Drawing.Point(3, 13);
+            this.textBox_TestMessages.Multiline = true;
+            this.textBox_TestMessages.Name = "textBox_TestMessages";
+            this.textBox_TestMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_TestMessages.Size = new System.Drawing.Size(642, 269);
+            this.textBox_TestMessages.TabIndex = 0;
+            // 
+            // buttonStopTest
+            // 
+            this.buttonStopTest.Location = new System.Drawing.Point(135, 97);
+            this.buttonStopTest.Name = "buttonStopTest";
+            this.buttonStopTest.Size = new System.Drawing.Size(88, 34);
+            this.buttonStopTest.TabIndex = 2;
+            this.buttonStopTest.Text = "Stop Test";
+            this.buttonStopTest.UseVisualStyleBackColor = true;
+            this.buttonStopTest.Click += new System.EventHandler(this.buttonStopTest_Click);
+            // 
+            // button_StartTest
+            // 
+            this.button_StartTest.Location = new System.Drawing.Point(9, 97);
+            this.button_StartTest.Name = "button_StartTest";
+            this.button_StartTest.Size = new System.Drawing.Size(88, 34);
+            this.button_StartTest.TabIndex = 1;
+            this.button_StartTest.Text = "Start Test";
+            this.button_StartTest.UseVisualStyleBackColor = true;
+            this.button_StartTest.Click += new System.EventHandler(this.button_StartTest_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(6, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 20);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Test List";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1047, 655);
+            this.ClientSize = new System.Drawing.Size(1003, 632);
             this.Controls.Add(this.tab_Program);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Ford Keyfob Tester V0.1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.tab_Program.ResumeLayout(false);
             this.tabPage_Connections.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -814,21 +826,21 @@ namespace Keyfob_Tester
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage_FunctionControl.ResumeLayout(false);
-            this.tabPage_Test.ResumeLayout(false);
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
+            this.tabPage_Test.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
