@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Keyfob_Tester
 {
@@ -25,6 +19,7 @@ namespace Keyfob_Tester
         private string data;
         private string[] data1;
         string testdata = "";
+        string completeMessage = "";
         #endregion Variables
 
         #region CommunationInitalize
@@ -64,7 +59,7 @@ namespace Keyfob_Tester
                 SerPort_Arduino.DataBits = 8;
                 SerPort_Arduino.StopBits = StopBits.One;
                 SerPort_Arduino.ReadBufferSize = 20000000;
-                SerPort_Arduino.DataReceived += SerPort_Arduino_DataReceived;              
+                SerPort_Arduino.DataReceived += SerPort_Arduino_DataReceived;
                 SerPort_Arduino.Open(); //We open the port
                 if (SerPort_Arduino.IsOpen == true)
                 {
@@ -139,7 +134,7 @@ namespace Keyfob_Tester
             }
         }
 
-        
+
         private void button_Disconnect2_Click(object sender, EventArgs e)
         {
             try
@@ -163,27 +158,11 @@ namespace Keyfob_Tester
 
             }
         }
-       
+
         #endregion CommunationInitalize
 
         #region Form
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            try
-            {
-                if (SerPort_Arduino.IsOpen == true && SerPort_EvalBoard.IsOpen == true)
-                {
-                    SerPort_Arduino.Close();
-                    SerPort_EvalBoard.Close();
-                }
-                
-            }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show(ex.Message, "Error!");
-            }
-        }
 
         #endregion Form
 
@@ -241,26 +220,35 @@ namespace Keyfob_Tester
             }
 
         }
+        private StringBuilder dataBuffer = new StringBuilder();
         private void SerPort_EvalBoard_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
+
             if (SerPort_EvalBoard.IsOpen == true)
             {
                 receivedData_EvalBoard = SerPort_EvalBoard.ReadLine(); //We read the serial port
-                
-                    //if (receivedData_EvalBoard.StartsWith("(INF)") || receivedData_EvalBoard.StartsWith("SPI"))
-                    //{
-                        this.Invoke(new Action(ProcessingData_EvalBoard)); //execute the delegate (ProcessingData)
-                        this.Invoke(new Action(ProcessingData_Test)); //execute the delegate (ProcessingData)
-                    //}      
+
+                //dataBuffer.Append(receivedData_EvalBoard);
+                //if (dataBuffer.ToString().Contains("\n"))
+                //{
+                //  string completeMessage = dataBuffer.ToString();
+                //  // Veriyi işleme veya başka bir iş parçacığına iletim yapma
+                //  //dataBuffer.Clear();
+                //}
+                //if (receivedData_EvalBoard.StartsWith("(INF)") || receivedData_EvalBoard.StartsWith("SPI"))
+                //{
+                this.Invoke(new Action(ProcessingData_EvalBoard)); //execute the delegate (ProcessingData)
+                this.Invoke(new Action(ProcessingData_Test)); //execute the delegate (ProcessingData)
+
             }
-                
-            
+
+
             else
             {
                 MessageBox.Show("Error!");
             }
-            
-            
+
+
         }
         private void ProcessingData_EvalBoard()
         {
@@ -275,14 +263,14 @@ namespace Keyfob_Tester
                 foreach (Match match in matches)
                 {
                     string hexValues = match.Value;
-                    data1.Append(hexValues);        
+                    data1.Append(hexValues);
                 }
-                
+
                 //string[] hexValuesArray = data1.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 string[] hexValuesArray = data1.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 string combinedValues = string.Join(", ", hexValuesArray);
                 comboBox1.Items.Add(combinedValues);
-                comboBox2.Items.Add(combinedValues);    
+                comboBox2.Items.Add(combinedValues);
                 //foreach (string dene in hexValuesArray)
                 //{
                 //    comboBox1.Items.Add(dene);
@@ -292,10 +280,9 @@ namespace Keyfob_Tester
                 //    textBox_ArduinoMessages.Text = extractedPattern;    
                 //}
 
-                
+
             }
             textBox_EvalBoardMessages.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + receivedData_EvalBoard.ToString() + Environment.NewLine;
-            //We put the received data in the textbox and add a linebreak
             textBox_EvalBoardMessages.SelectionStart = textBox_EvalBoardMessages.Text.Length;
             textBox_EvalBoardMessages.ScrollToCaret();
 
@@ -303,19 +290,13 @@ namespace Keyfob_Tester
         private void ProcessingData_Arduino()
         {
             textBox_ArduinoMessages.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + receivedData_Arduino.ToString() + Environment.NewLine;
-            //We put the received data in the textbox and add a linebreak
             textBox_ArduinoMessages.SelectionStart = textBox_ArduinoMessages.Text.Length;
             textBox_ArduinoMessages.ScrollToCaret();
         }
 
         private void ProcessingData_Test()
         {
-            //if (receivedData_EvalBoard.StartsWith("(INF)"))
-            //{
-            //    string testdata = receivedData_EvalBoard.ToString();
-            //}
             textBox_TestMessages.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + receivedData_Arduino.ToString() + Environment.NewLine;
-            //We put the received data in the textbox and add a linebreak
             textBox_TestMessages.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + receivedData_EvalBoard.ToString() + Environment.NewLine;
             textBox_TestMessages.SelectionStart = textBox_TestMessages.Text.Length;
             textBox_TestMessages.ScrollToCaret();
@@ -365,7 +346,6 @@ namespace Keyfob_Tester
         private void button_GetKeyList_Click(object sender, EventArgs e)
         {
             keylist();
-            
         }
         private void button_StartPolling_Click(object sender, EventArgs e)
         {
@@ -376,6 +356,7 @@ namespace Keyfob_Tester
         private void button_StopPolling_Click(object sender, EventArgs e)
         {
             stop_rssi();
+            Thread.Sleep(500);
             SerPort_EvalBoard.DiscardInBuffer();
             SerPort_EvalBoard.DiscardOutBuffer();
         }
@@ -385,24 +366,51 @@ namespace Keyfob_Tester
             immo();
         }
 
+        private void button_Save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (textBox_EvalBoardMessages.Text.Length > 0)
+                {
+                    SaveFileDialog dlg = new SaveFileDialog();
+                    dlg.Filter = "*.txt|*.txt";
+                    dlg.RestoreDirectory = true;
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        System.IO.File.WriteAllText(dlg.FileName, textBox_EvalBoardMessages.Text);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Boş dosya kaydedemezsiniz!");
+                    Thread.Sleep(1000);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!");
+            }
+
+        }
+
+        private void button_Clear_Click(object sender, EventArgs e)
+        {
+            textBox_EvalBoardMessages.Clear();
+        }
+
         private void button_StopImmobilizer_Click(object sender, EventArgs e)
         {
-            stop_immo();
-            SerPort_EvalBoard.DiscardInBuffer();
-            SerPort_EvalBoard.DiscardOutBuffer();
+            stop();
         }
 
         private void button_StartRKE_Click(object sender, EventArgs e)
         {
-            textBox_EvalBoardMessages.Text += "RKE Test Logs";
             rke();
         }
 
         private void button_StopRKE_Click(object sender, EventArgs e)
         {
-            stop_immo();
-            SerPort_EvalBoard.DiscardInBuffer();
-            SerPort_EvalBoard.DiscardOutBuffer();
+            stop();
         }
 
         private void button_ResetDeviceEvalBoard_Click(object sender, EventArgs e)
@@ -440,10 +448,10 @@ namespace Keyfob_Tester
                     MessageSender("EvalBoard", "CMD_CONFIG_DRIVER(0 ,0x3 ,0x0 ,0x38 ,0x44 ,0x2b ,0x30 ,0xf0);");
                     Thread.Sleep(500);
                     MessageSender("EvalBoard", "KEYFOB_IDE(" + comboBox1.SelectedItem.ToString() + ");");
-                  // SerPort_EvalBoard.Write("KEYFOB_IDE(");
-                  // SerPort_EvalBoard.Write(comboBox1.SelectedItem.ToString());
-                  // SerPort_EvalBoard.Write(");");
-                  // //MessageSender("EvalBoard", "KEYFOB_IDE(0x13, 0x56, 0x57, 0xE3);");
+                    // SerPort_EvalBoard.Write("KEYFOB_IDE(");
+                    // SerPort_EvalBoard.Write(comboBox1.SelectedItem.ToString());
+                    // SerPort_EvalBoard.Write(");");
+                    // //MessageSender("EvalBoard", "KEYFOB_IDE(0x13, 0x56, 0x57, 0xE3);");
                     Thread.Sleep(500);
                     MessageSender("EvalBoard", "CMD_SAVE(3);");
                     Thread.Sleep(500);
@@ -470,9 +478,12 @@ namespace Keyfob_Tester
             comboBox1.Items.Clear();
         }
 
-        void stop_immo()
+        void stop()
         {
             MessageSender("EvalBoard", "AUTONOMOUS_MODE(0);");
+            Thread.Sleep(200);
+            SerPort_EvalBoard.DiscardInBuffer();
+            SerPort_EvalBoard.DiscardOutBuffer();
         }
 
         void immo()
@@ -511,7 +522,7 @@ namespace Keyfob_Tester
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "Error!"); 
+                MessageBox.Show(ex.Message, "Error!");
             }
         }
 
@@ -519,34 +530,41 @@ namespace Keyfob_Tester
         {
             try
             {
+                if (comboBox1.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Lütfen anahtar seçiniz!");
+                }
+                else
+                {
+                    MessageSender("EvalBoard", "CMD_CONFIG_DEVICE(1,0x08,0x04,0x0C,0x40,0x25,0x01,0xD5,0x25,0x10,0x00,0x03,0xFF,0x85,0xFF,0xFF,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "CMD_CONFIG_ADVANCED(1,0x03,0xBB,0xB3,0xE5,0x15,0xF2);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "CMD_CONFIG_DRIVER(0,0xED,0x02,0x38,0x44,0xEB,0x30,0xF0,0x10,0x82,0x38,0x3F,0xEB,0x30,0xF0);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "SPILOG_CONFIG(0);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "RESP_GENERIC_CONFIG(1);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "KEYFOB_IDE(" + comboBox1.SelectedItem.ToString() + ");");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "IMMO_SECRETKEY(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ,0x00, 0x00, 0x00, 0x00, 0x00, 0x00);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "CMD_SAVE(3);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "IMMO_CHALLENGE();");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "CMD_START_IMMO(1,0x0C,0x01,0x68,0x20,0x81,0x11,0x00,0x12,0x14);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "DELAY(21);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "IMMO_START(0x11,0);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "CMD_SAVE(0);");
+                    Thread.Sleep(500);
+                    MessageSender("EvalBoard", "AUTONOMOUS_MODE(1, 2, 1000);");
 
-                MessageSender("EvalBoard", "CMD_CONFIG_DEVICE(1,0x08,0x04,0x0C,0x40,0x25,0x01,0xD5,0x25,0x10,0x00,0x03,0xFF,0x85,0xFF,0xFF,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "CMD_CONFIG_ADVANCED(1,0x03,0xBB,0xB3,0xE5,0x15,0xF2);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "CMD_CONFIG_DRIVER(0,0xED,0x02,0x38,0x44,0xEB,0x30,0xF0,0x10,0x82,0x38,0x3F,0xEB,0x30,0xF0);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "SPILOG_CONFIG(0);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "RESP_GENERIC_CONFIG(1);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "KEYFOB_IDE(" + comboBox1.SelectedItem.ToString() + ");");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "IMMO_SECRETKEY(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 ,0x00, 0x00, 0x00, 0x00, 0x00, 0x00);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "CMD_SAVE(3);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "IMMO_CHALLENGE();");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "CMD_START_IMMO(1,0x0C,0x01,0x68,0x20,0x81,0x11,0x00,0x12,0x14);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "DELAY(21);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "IMMO_START(0x11,0);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "CMD_SAVE(0);");
-                Thread.Sleep(500);
-                MessageSender("EvalBoard", "AUTONOMOUS_MODE(1, 2, 1000);");
+                }
             }
             catch (Exception ex)
             {
@@ -623,19 +641,15 @@ namespace Keyfob_Tester
             Thread.Sleep(100);
             immo();
             Thread.Sleep(1000);
-            stop_immo();
-            
+            stop();
+
 
         }
-        
+
         private void buttonStopTest_Click(object sender, EventArgs e)
         {
-            stop_immo();
-            SerPort_EvalBoard.DiscardInBuffer();
-            SerPort_EvalBoard.DiscardOutBuffer();
+            stop();
         }
-
-        #endregion TestSection
 
         private void button_GetKeyListTest_Click(object sender, EventArgs e)
         {
@@ -644,43 +658,34 @@ namespace Keyfob_Tester
             comboBox2.Items.Clear();
         }
 
-        
 
-        
 
-        private void button_Save_Click(object sender, EventArgs e)
+
+
+
+
+
+
+
+        #endregion TestSection
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
-                if (textBox_EvalBoardMessages.Text.Length > 0)
+                if (SerPort_Arduino != null && SerPort_Arduino.IsOpen && SerPort_EvalBoard != null && SerPort_EvalBoard.IsOpen)
                 {
-                    SaveFileDialog dlg = new SaveFileDialog();
-                    dlg.Filter = "*.txt|*.txt";
-                    dlg.RestoreDirectory = true;
-                    if (dlg.ShowDialog() == DialogResult.OK)
-                    {
-                        System.IO.File.WriteAllText(dlg.FileName, textBox_EvalBoardMessages.Text);
-                    }
+                    SerPort_Arduino.Close();
+                    SerPort_EvalBoard.Close();
                 }
-                else
-                {
-                    MessageBox.Show("Boş dosya kaydedemezsiniz!");
-                    Thread.Sleep(1000);
-                }
+
             }
             catch (Exception ex)
             {
+
                 MessageBox.Show(ex.Message, "Error!");
             }
-
         }
-
-        private void button_Clear_Click(object sender, EventArgs e)
-        {
-            textBox_EvalBoardMessages.Clear();
-        }
-
-       
     }
 }
 
