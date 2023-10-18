@@ -41,6 +41,11 @@ namespace Keyfob_Tester
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.textBox_EvalBoardMessages = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button_StopImmobilizer = new System.Windows.Forms.Button();
+            this.button_StartImmobilizer = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button_Clear = new System.Windows.Forms.Button();
             this.button_Save = new System.Windows.Forms.Button();
@@ -67,11 +72,8 @@ namespace Keyfob_Tester
             this.label_Baudrate2 = new System.Windows.Forms.Label();
             this.label_COMPort2 = new System.Windows.Forms.Label();
             this.tab_Program = new System.Windows.Forms.TabControl();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button_StopImmobilizer = new System.Windows.Forms.Button();
-            this.button_StartImmobilizer = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tabPage_FunctionControl.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -79,6 +81,7 @@ namespace Keyfob_Tester
             this.tabPage_Connections.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tab_Program.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage_FunctionControl
@@ -88,23 +91,29 @@ namespace Keyfob_Tester
             this.tabPage_FunctionControl.Location = new System.Drawing.Point(4, 22);
             this.tabPage_FunctionControl.Name = "tabPage_FunctionControl";
             this.tabPage_FunctionControl.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_FunctionControl.Size = new System.Drawing.Size(1349, 563);
+            this.tabPage_FunctionControl.Size = new System.Drawing.Size(1357, 560);
             this.tabPage_FunctionControl.TabIndex = 1;
             this.tabPage_FunctionControl.Text = "Function Control";
             this.tabPage_FunctionControl.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.chart1);
             this.groupBox7.Controls.Add(this.textBox_EvalBoardMessages);
-            this.groupBox7.Location = new System.Drawing.Point(387, 6);
+            this.groupBox7.Location = new System.Drawing.Point(399, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(955, 547);
+            this.groupBox7.Size = new System.Drawing.Size(955, 554);
             this.groupBox7.TabIndex = 21;
             this.groupBox7.TabStop = false;
             // 
             // chart1
             // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
@@ -114,15 +123,15 @@ namespace Keyfob_Tester
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
-            series1.Name = "CH1";
+            series1.Name = "X";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Legend = "Legend1";
-            series2.Name = "CH2";
+            series2.Name = "Y";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series3.Legend = "Legend1";
-            series3.Name = "CH3";
+            series3.Name = "Z";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
@@ -132,6 +141,8 @@ namespace Keyfob_Tester
             // 
             // textBox_EvalBoardMessages
             // 
+            this.textBox_EvalBoardMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_EvalBoardMessages.Location = new System.Drawing.Point(6, 13);
             this.textBox_EvalBoardMessages.Multiline = true;
             this.textBox_EvalBoardMessages.Name = "textBox_EvalBoardMessages";
@@ -160,11 +171,61 @@ namespace Keyfob_Tester
             this.groupBox11.Controls.Add(this.label6);
             this.groupBox11.Controls.Add(this.button_ResetDeviceEvalBoard);
             this.groupBox11.Controls.Add(this.label5);
-            this.groupBox11.Location = new System.Drawing.Point(3, 6);
+            this.groupBox11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox11.Location = new System.Drawing.Point(3, 3);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(378, 547);
+            this.groupBox11.Size = new System.Drawing.Size(378, 554);
             this.groupBox11.TabIndex = 22;
             this.groupBox11.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(250, 353);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(111, 34);
+            this.button2.TabIndex = 31;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button_StopImmobilizer
+            // 
+            this.button_StopImmobilizer.Location = new System.Drawing.Point(137, 353);
+            this.button_StopImmobilizer.Name = "button_StopImmobilizer";
+            this.button_StopImmobilizer.Size = new System.Drawing.Size(88, 34);
+            this.button_StopImmobilizer.TabIndex = 30;
+            this.button_StopImmobilizer.Text = "Stop";
+            this.button_StopImmobilizer.UseVisualStyleBackColor = true;
+            this.button_StopImmobilizer.Click += new System.EventHandler(this.button_StopImmobilizer_Click);
+            // 
+            // button_StartImmobilizer
+            // 
+            this.button_StartImmobilizer.Location = new System.Drawing.Point(11, 353);
+            this.button_StartImmobilizer.Name = "button_StartImmobilizer";
+            this.button_StartImmobilizer.Size = new System.Drawing.Size(88, 34);
+            this.button_StartImmobilizer.TabIndex = 29;
+            this.button_StartImmobilizer.Text = "Start Immobilizer ";
+            this.button_StartImmobilizer.UseVisualStyleBackColor = true;
+            this.button_StartImmobilizer.Click += new System.EventHandler(this.button_StartImmobilizer_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 327);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(102, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Immboilizer Function";
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(250, 279);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 34);
+            this.button1.TabIndex = 26;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -307,7 +368,7 @@ namespace Keyfob_Tester
             this.tabPage_Connections.Location = new System.Drawing.Point(4, 22);
             this.tabPage_Connections.Name = "tabPage_Connections";
             this.tabPage_Connections.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_Connections.Size = new System.Drawing.Size(1349, 563);
+            this.tabPage_Connections.Size = new System.Drawing.Size(1357, 560);
             this.tabPage_Connections.TabIndex = 0;
             this.tabPage_Connections.Text = "Bağlantılar";
             this.tabPage_Connections.UseVisualStyleBackColor = true;
@@ -323,9 +384,10 @@ namespace Keyfob_Tester
             this.groupBox2.Controls.Add(this.comboBox_COMPortEvalBoard);
             this.groupBox2.Controls.Add(this.label_Baudrate2);
             this.groupBox2.Controls.Add(this.label_COMPort2);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(518, 177);
+            this.groupBox2.Size = new System.Drawing.Size(1351, 554);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
@@ -419,70 +481,45 @@ namespace Keyfob_Tester
             // 
             // tab_Program
             // 
+            this.tab_Program.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tab_Program.Controls.Add(this.tabPage_Connections);
             this.tab_Program.Controls.Add(this.tabPage_FunctionControl);
             this.tab_Program.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tab_Program.Location = new System.Drawing.Point(7, 4);
+            this.tab_Program.Location = new System.Drawing.Point(0, 0);
             this.tab_Program.Name = "tab_Program";
             this.tab_Program.SelectedIndex = 0;
-            this.tab_Program.Size = new System.Drawing.Size(1357, 589);
+            this.tab_Program.Size = new System.Drawing.Size(1365, 586);
             this.tab_Program.TabIndex = 3;
             // 
-            // button1
+            // toolStrip1
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(250, 279);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 34);
-            this.button1.TabIndex = 26;
-            this.button1.UseVisualStyleBackColor = true;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 589);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1365, 25);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
             // 
-            // button2
+            // toolStripLabel1
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(250, 353);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 34);
-            this.button2.TabIndex = 31;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button_StopImmobilizer
-            // 
-            this.button_StopImmobilizer.Location = new System.Drawing.Point(137, 353);
-            this.button_StopImmobilizer.Name = "button_StopImmobilizer";
-            this.button_StopImmobilizer.Size = new System.Drawing.Size(88, 34);
-            this.button_StopImmobilizer.TabIndex = 30;
-            this.button_StopImmobilizer.Text = "Stop";
-            this.button_StopImmobilizer.UseVisualStyleBackColor = true;
-            // 
-            // button_StartImmobilizer
-            // 
-            this.button_StartImmobilizer.Location = new System.Drawing.Point(11, 353);
-            this.button_StartImmobilizer.Name = "button_StartImmobilizer";
-            this.button_StartImmobilizer.Size = new System.Drawing.Size(88, 34);
-            this.button_StartImmobilizer.TabIndex = 29;
-            this.button_StartImmobilizer.Text = "Start Immobilizer ";
-            this.button_StartImmobilizer.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 327);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 13);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "Immboilizer Function";
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(40, 22);
+            this.toolStripLabel1.Text = "About";
+            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1365, 614);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.tab_Program);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1381, 653);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ford Keyfob Tester V0.1";
@@ -498,7 +535,10 @@ namespace Keyfob_Tester
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tab_Program.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -540,6 +580,8 @@ namespace Keyfob_Tester
         private Button button_StopImmobilizer;
         private Button button_StartImmobilizer;
         private Label label7;
+        private ToolStrip toolStrip1;
+        private ToolStripLabel toolStripLabel1;
     }
 }
 

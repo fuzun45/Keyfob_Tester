@@ -13,7 +13,6 @@ using System.Diagnostics;
 using System.Management;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-
 namespace Keyfob_Tester
 {
     public partial class Form1 : Form
@@ -208,15 +207,18 @@ namespace Keyfob_Tester
 
         private void Chart_Initalize()
         {
-            chart1.Series["CH1"].Points.AddXY(0, 0);
-            chart1.Series["CH2"].Points.AddXY(0, 0);
-            chart1.Series["CH3"].Points.AddXY(0, 0);
+            chart1.Series["X"].Points.AddXY(0, 0);
+            chart1.Series["Y"].Points.AddXY(0, 0);
+            chart1.Series["Z"].Points.AddXY(0, 0);
             chart1.ChartAreas["ChartArea1"].AxisX.Title = "Time";  // Chart X Axis Title
             chart1.ChartAreas["ChartArea1"].AxisY.Title = "RSSI";  // Chart X Axis Title
             chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Format = "{}mV";
-            chart1.Series["CH1"].BorderWidth = 2;
-            chart1.Series["CH2"].BorderWidth = 2;
-            chart1.Series["CH3"].BorderWidth = 2;
+            chart1.Series["X"].BorderWidth = 2;
+            chart1.Series["Y"].BorderWidth = 2;
+            chart1.Series["Z"].BorderWidth = 2;
+            int v = groupBox7.Width - 5;
+            Size size = chart1.Size;
+            size.Width = v;
             chart1.Invalidate();
         }
 
@@ -360,9 +362,9 @@ namespace Keyfob_Tester
                     chart1.ChartAreas["ChartArea1"].AxisX.Title = "Time";  // Chart X Axis Title
                     chart1.ChartAreas["ChartArea1"].AxisY.Title = "RSSI";  // Chart X Axis Title
                     chart1.ChartAreas["ChartArea1"].AxisY.LabelStyle.Format = "{}mV";
-                    chart1.Series["CH1"].Points.AddXY(DateTime.Now.ToString("HH:mm:ss"), CH1);
-                    chart1.Series["CH2"].Points.AddXY(DateTime.Now.ToString("HH:mm:ss"), CH2);
-                    chart1.Series["CH3"].Points.AddXY(DateTime.Now.ToString("HH:mm:ss"), CH3);
+                    chart1.Series["X"].Points.AddXY(DateTime.Now.ToString("HH:mm:ss"), CH1);
+                    chart1.Series["Y"].Points.AddXY(DateTime.Now.ToString("HH:mm:ss"), CH2);
+                    chart1.Series["Z"].Points.AddXY(DateTime.Now.ToString("HH:mm:ss"), CH3);
                     chart1.Invalidate();
 
                 }
@@ -745,6 +747,12 @@ namespace Keyfob_Tester
                 MessageBox.Show(ex.Message, "Error!");
             }
         }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            AboutBox1 a = new AboutBox1();
+            a.ShowDialog();
+        }
     }
 }
 
@@ -788,3 +796,4 @@ namespace Keyfob_Tester
              */
 
 #endregion Comment
+        
