@@ -39,7 +39,6 @@ namespace Keyfob_Tester
             this.tabPage_FunctionControl = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.textBox_EvalBoardMessages = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button_StopImmobilizer = new System.Windows.Forms.Button();
@@ -74,6 +73,7 @@ namespace Keyfob_Tester
             this.tab_Program = new System.Windows.Forms.TabControl();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.textBox_EvalBoardMessages = new System.Windows.Forms.TextBox();
             this.tabPage_FunctionControl.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -138,17 +138,6 @@ namespace Keyfob_Tester
             this.chart1.Size = new System.Drawing.Size(949, 222);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
-            // 
-            // textBox_EvalBoardMessages
-            // 
-            this.textBox_EvalBoardMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_EvalBoardMessages.Location = new System.Drawing.Point(6, 13);
-            this.textBox_EvalBoardMessages.Multiline = true;
-            this.textBox_EvalBoardMessages.Name = "textBox_EvalBoardMessages";
-            this.textBox_EvalBoardMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_EvalBoardMessages.Size = new System.Drawing.Size(949, 300);
-            this.textBox_EvalBoardMessages.TabIndex = 0;
             // 
             // groupBox11
             // 
@@ -511,6 +500,18 @@ namespace Keyfob_Tester
             this.toolStripLabel1.Text = "About";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
+            // textBox_EvalBoardMessages
+            // 
+            this.textBox_EvalBoardMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_EvalBoardMessages.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox_EvalBoardMessages.Location = new System.Drawing.Point(6, 13);
+            this.textBox_EvalBoardMessages.Multiline = true;
+            this.textBox_EvalBoardMessages.Name = "textBox_EvalBoardMessages";
+            this.textBox_EvalBoardMessages.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_EvalBoardMessages.Size = new System.Drawing.Size(949, 300);
+            this.textBox_EvalBoardMessages.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -546,7 +547,6 @@ namespace Keyfob_Tester
 
         private TabPage tabPage_FunctionControl;
         private GroupBox groupBox7;
-        private TextBox textBox_EvalBoardMessages;
         private GroupBox groupBox11;
         private Button button_Clear;
         private Button button_Save;
@@ -582,6 +582,7 @@ namespace Keyfob_Tester
         private Label label7;
         private ToolStrip toolStrip1;
         private ToolStripLabel toolStripLabel1;
+        private TextBox textBox_EvalBoardMessages;
     }
 }
 

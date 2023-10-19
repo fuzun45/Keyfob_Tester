@@ -12,13 +12,15 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
 using System.Management;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Timers;
+
 
 namespace Keyfob_Tester
 {
     public partial class Form1 : Form
     {
         #region Variables
-
+        //private System.Windows.Forms.Timer chartUpdateTimer;
         private SerialPort SerPort_EvalBoard; //serial port
         private string comport;
         string receivedData_EvalBoard = "";
@@ -26,10 +28,11 @@ namespace Keyfob_Tester
         private string[] data1;
         string testdata = "";
         string completeMessage = "";
-        List<string> deviceList;
-        string devicename1;
         bool rke_started;
         private bool immo_started;
+        private string logFilePath = "./received_data.log"; // Log dosyası adı $"{DateTime.Now:yyyy-MM-dd HH:mm:ss}
+        private string timeNow = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        private string fileName = "./received_data.log";
         #endregion Variables
 
         #region CommunationInitalize
@@ -43,9 +46,13 @@ namespace Keyfob_Tester
 
             label_Status2.ForeColor = Color.DarkOrange;
             label_Status2.Text = "Not Connected";
+            //chartUpdateTimer = new System.Windows.Forms.Timer();
+            //chartUpdateTimer.Interval = 5000; // 5 saniyede bir çalışır
+            
+            //chartUpdateTimer.Enabled = true; // Timer'ı başlat
 
         }
-
+        
         private void SerialPort_Configuration()
         {
             string[] ports = SerialPort.GetPortNames();
@@ -115,7 +122,6 @@ namespace Keyfob_Tester
             return comPortDevices;
         }
 
-        
         public string GetComPortName(string deviceName) // COM port adını çıkaran fonksiyon
         {
             Match match = Regex.Match(deviceName, @"\bCOM\d+\b");
@@ -125,10 +131,7 @@ namespace Keyfob_Tester
             }
             return string.Empty;
         }
-
-       
-      
-
+ 
         private void button_Connect2_Click(object sender, EventArgs e)
         {
             try
@@ -158,6 +161,14 @@ namespace Keyfob_Tester
                     tab_Program.SelectedIndex = 1;  
 
                 }
+                else { 
+                    button_GetKeyList.Enabled = false;
+                    button_ResetDeviceEvalBoard.Enabled = false;
+                    button_StartImmobilizer.Enabled = false;
+                    button_StartRKE.Enabled = false;
+                    button_StartPolling.Enabled = false;
+                
+                }
 
                 Thread.Sleep(1000); //We wait a sec
                 button_Connect2.Enabled = false;
@@ -170,7 +181,6 @@ namespace Keyfob_Tester
 
             }
         }
-
 
         private void button_Disconnect2_Click(object sender, EventArgs e)
         {
@@ -202,7 +212,24 @@ namespace Keyfob_Tester
         private void Form1_Load(object sender, EventArgs e)
         {
             Chart_Initalize();
-           
+            
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                if (SerPort_EvalBoard != null && SerPort_EvalBoard.IsOpen)
+                {
+                    SerPort_EvalBoard.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error!");
+            }
         }
 
         private void Chart_Initalize()
@@ -220,6 +247,21 @@ namespace Keyfob_Tester
             Size size = chart1.Size;
             size.Width = v;
             chart1.Invalidate();
+            
+        }
+
+        private void UpdateChart(object sender, EventArgs e)
+        {
+            chart1.Series.Clear(); // Tüm serileri temizle
+            chart1.ChartAreas.Clear(); // Tüm chart alanlarını temizle
+            chart1.Annotations.Clear(); // Tüm notları temizle
+
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            AboutBox1 a = new AboutBox1();
+            a.ShowDialog();
         }
 
         #endregion Form
@@ -249,30 +291,67 @@ namespace Keyfob_Tester
         }
         private void SerPort_EvalBoard_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-
             if (SerPort_EvalBoard.IsOpen == true)
             {
                 receivedData_EvalBoard = SerPort_EvalBoard.ReadLine(); //We read the serial port
                 this.Invoke(new Action(ProcessingData_EvalBoard)); //execute the delegate (ProcessingData)
-               
-
+                
+                LogReceivedData(receivedData_EvalBoard);
             }
-
-
             else
             {
                 MessageBox.Show("Error!");
             }
-
-
         }
+
+        private void LogReceivedData(string data)
+        {
+            
+            // Arka planda log dosyasına yazma işlemi
+            ThreadPool.QueueUserWorkItem((state) =>
+            {
+                lock (logFilePath)
+                {
+                    using (StreamWriter writer = File.AppendText(logFilePath))
+                    {
+                        writer.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss}: {data}");
+                    }
+                }
+            });
+        }
+
         private void ProcessingData_EvalBoard()
         {
             Key_Read();
-            RSSI_Read();
-            Log_Write();
+            RSSI_Read();           
             RKE_Read();
             Immo_Read();
+            Button_Read();
+            //Log_Write();
+        }
+
+        private void Button_Read()
+        {
+            if (receivedData_EvalBoard.StartsWith("(SPI)   Lizard response frame :  0x1A, 0x0F, 0x80, "))
+            {
+                string message = receivedData_EvalBoard.ToString();
+                // SPI verilerini çıkarmak için bir Regex kullanın
+                string pattern = @"\(SPI\)\s+Lizard response frame\s*:\s*(.*)";
+                Match match = Regex.Match(message, pattern);
+
+                if (match.Success)
+                {
+                    string spiData = match.Groups[1].Value.Trim();
+                    // Şimdi `spiData` değişkeni içinde SPI verileri bulunur
+                    textBox_EvalBoardMessages.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + spiData + Environment.NewLine;
+                    textBox_EvalBoardMessages.SelectionStart = textBox_EvalBoardMessages.Text.Length - 1;
+                    textBox_EvalBoardMessages.ScrollToCaret();
+                }
+
+
+
+
+            }
         }
 
         private void RKE_Read()
@@ -326,12 +405,13 @@ namespace Keyfob_Tester
         private void Log_Write()
         {
             textBox_EvalBoardMessages.Text += DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ": " + receivedData_EvalBoard.ToString() + Environment.NewLine;
-            textBox_EvalBoardMessages.SelectionStart = textBox_EvalBoardMessages.Text.Length;
+            textBox_EvalBoardMessages.SelectionStart = textBox_EvalBoardMessages.Text.Length - 1;
             textBox_EvalBoardMessages.ScrollToCaret();
-        }
+        }       
 
         private void RSSI_Read()
         {
+            
             if (receivedData_EvalBoard.StartsWith("(INF)   RSSI result:"))
             {
                 string message = receivedData_EvalBoard.ToString();
@@ -366,6 +446,7 @@ namespace Keyfob_Tester
                     chart1.Series["Y"].Points.AddXY(DateTime.Now.ToString("HH:mm:ss"), CH2);
                     chart1.Series["Z"].Points.AddXY(DateTime.Now.ToString("HH:mm:ss"), CH3);
                     chart1.Invalidate();
+                    
 
                 }
 
@@ -420,7 +501,11 @@ namespace Keyfob_Tester
                 //string[] hexValuesArray = data1.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 string[] hexValuesArray = data1.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 string combinedValues = string.Join(", ", hexValuesArray);
-                comboBox1.Items.Add(combinedValues);
+                if (!comboBox1.Items.Contains(combinedValues))
+                {
+                    comboBox1.Items.Add(combinedValues);
+                }
+                
 
                 //foreach (string dene in hexValuesArray)
                 //{
@@ -435,15 +520,11 @@ namespace Keyfob_Tester
             }
         }
 
-
-
         private void DropDownList(object sender, EventArgs e)
         {
 
         }
         #endregion Message_SendReceive
-
-       
 
         #region EvalBoard_Communication
         private void button_GetKeyList_Click(object sender, EventArgs e)
@@ -451,12 +532,15 @@ namespace Keyfob_Tester
             keylist();
             
         }
+
         private void button_StartPolling_Click(object sender, EventArgs e)
         {
 
             rssi();
+            
 
         }
+
         private void button_StopPolling_Click(object sender, EventArgs e)
         {
             stop_rssi();
@@ -511,6 +595,7 @@ namespace Keyfob_Tester
         private void button_Clear_Click(object sender, EventArgs e)
         {
             textBox_EvalBoardMessages.Clear();
+            
             foreach (var series in chart1.Series)
             {
                 series.Points.Clear();
@@ -604,8 +689,8 @@ namespace Keyfob_Tester
         void stop_rssi()
         {
             MessageSender("EvalBoard", "AUTONOMOUS_MODE(0);");
-            comboBox1.Items.Clear();
-            comboBox1.Text = string.Empty;  
+            //comboBox1.Items.Clear();
+            //comboBox1.Text = string.Empty;  
         }
 
         void stop()
@@ -614,8 +699,8 @@ namespace Keyfob_Tester
             Thread.Sleep(200);
             SerPort_EvalBoard.DiscardInBuffer();
             SerPort_EvalBoard.DiscardOutBuffer();
-            comboBox1.Items.Clear();
-            comboBox1.Text = string.Empty;
+            //comboBox1.Items.Clear();
+            //comboBox1.Text = string.Empty;
         }
 
         void immo()
@@ -705,8 +790,6 @@ namespace Keyfob_Tester
             }
         }
 
-       
-
         void reset()
         {
             try
@@ -724,35 +807,8 @@ namespace Keyfob_Tester
             }
         }
 
-
-
         #endregion EvalBoard_Communication
 
-       
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            try
-            {
-                if ( SerPort_EvalBoard != null && SerPort_EvalBoard.IsOpen)
-                {
-                    
-                    SerPort_EvalBoard.Close();
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "Error!");
-            }
-        }
-
-        private void toolStripLabel1_Click(object sender, EventArgs e)
-        {
-            AboutBox1 a = new AboutBox1();
-            a.ShowDialog();
-        }
     }
 }
 
